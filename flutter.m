@@ -21,7 +21,7 @@ Th = 25 - ((6.5*h)/1000);
  a0 = 331.3;
  a = a0 + 0.606*Th;
 % Calculo da pressão atmosférica
-To = 25 + 273.15;
+To = 15 + 273.15;
 P = Po*((1-0.0065*(h/To)).^(5.2561));
 % b = input('Digite o valor da altura da empena (m): ');
 b = 0.2;
