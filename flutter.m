@@ -9,15 +9,19 @@
 clc;
 clear all;
 close all;
-% To = input('Digite a temperatura no local de voo (°C):' );
-h = 0:3500;
+
+% Constantes
+Po = 101325; % Pressão atmosférica a nível do mar [Pa]
+h = 0:3500; % Vetor altitude [m]
+
+[T1,a1,P1,rho1] = atmosisa(h);
+
 Th = 25 - ((6.5*h)/1000);
 % Calculo da velocidade do som (m/s)
  a0 = 331.3;
  a = a0 + 0.606*Th;
 % Calculo da pressão atmosférica
 To = 25 + 273.15;
-Po = 101325;
 P = Po*((1-0.0065*(h/To)).^(5.2561));
 % b = input('Digite o valor da altura da empena (m): ');
 b = 0.2;
@@ -78,42 +82,43 @@ Mach_c = FVc./a;
 
 % Salvar Dados
 Flutter1 = [FVa; FVb; FVc; Mach_a; Mach_b; Mach_c]';
+save('Flutter1');
 
-figure(1)
-plot(h,FVc,'b','linewidth',1.2),grid;
-xlabel('Altitude (m)');
-ylabel('Velocidade de Flutter (m/s)');
-title('Variação da velocidade de Flutter referente a empena com 3 mm de espessura');
-
-figure(2)
-plot(h,FVb,'k','linewidth',1.5),grid;
-xlabel('Altitude (m)');
-ylabel('Velocidade de Flutter (m/s)');
-title('Variação da velocidade de Flutter referente a empena com 4 mm de espessura');
-
-figure(3)
-plot(h,FVa,'r','linewidth',1.5),grid;
-xlabel('Altitude (m)');
-ylabel('Velocidade de Flutter (m/s)');
-title('Variação da velocidade de Flutter referente a empena com 5 mm de espessura');
-
-% Plot dos gráficos referentes ao número de Mach
-
-figure(4)
-plot(h,Mach_c,'b-.','linewidth',1.5'),grid;
-xlabel('Altitude (m)');
-ylabel('Número de Mach de Flutter');
-title('Variação do número de Mach referente a empena com 3 mm de espessura');
-
-figure(5)
-plot(h,Mach_b,'k-.','linewidth',1.5'),grid;
-xlabel('Altitude (m)');
-ylabel('Número de Mach de Flutter');
-title('Variação do número de Mach referente a empena com 4 mm de espessura');
-
-figure(6)
-plot(h,Mach_a,'r-.','linewidth',1.5'),grid;
-xlabel('Altitude (m)');
-ylabel('Número de Mach de Flutter');
-title('Variação do número de Mach referente a empena com 5 mm de espessura');
+% figure(1)
+% plot(h,FVc,'b','linewidth',1.2),grid;
+% xlabel('Altitude (m)');
+% ylabel('Velocidade de Flutter (m/s)');
+% title('Variação da velocidade de Flutter referente a empena com 3 mm de espessura');
+% 
+% figure(2)
+% plot(h,FVb,'k','linewidth',1.5),grid;
+% xlabel('Altitude (m)');
+% ylabel('Velocidade de Flutter (m/s)');
+% title('Variação da velocidade de Flutter referente a empena com 4 mm de espessura');
+% 
+% figure(3)
+% plot(h,FVa,'r','linewidth',1.5),grid;
+% xlabel('Altitude (m)');
+% ylabel('Velocidade de Flutter (m/s)');
+% title('Variação da velocidade de Flutter referente a empena com 5 mm de espessura');
+% 
+% % Plot dos gráficos referentes ao número de Mach
+% 
+% figure(4)
+% plot(h,Mach_c,'b-.','linewidth',1.5'),grid;
+% xlabel('Altitude (m)');
+% ylabel('Número de Mach de Flutter');
+% title('Variação do número de Mach referente a empena com 3 mm de espessura');
+% 
+% figure(5)
+% plot(h,Mach_b,'k-.','linewidth',1.5'),grid;
+% xlabel('Altitude (m)');
+% ylabel('Número de Mach de Flutter');
+% title('Variação do número de Mach referente a empena com 4 mm de espessura');
+% 
+% figure(6)
+% plot(h,Mach_a,'r-.','linewidth',1.5'),grid;
+% xlabel('Altitude (m)');
+% ylabel('Número de Mach de Flutter');
+% title('Variação do número de Mach referente a empena com 5 mm de espessura');
 
