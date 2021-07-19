@@ -76,6 +76,9 @@ Mach_c = FVc./a;
 %-------------------------------------------------------------------------
 % plot graficos
 
+% Salvar Dados
+Flutter1 = [FVa; FVb; FVc; Mach_a; Mach_b; Mach_c]';
+
 figure(1)
 plot(h,FVc,'b','linewidth',1.2),grid;
 xlabel('Altitude (m)');
