@@ -1,3 +1,11 @@
+% UFABC Rocket Design
+% Rotina: Algoritmo de Fluter
+% Responsável: Giovanna Gonçalves
+% Departamento de Estruturas e Aerodinâmica
+% Frente de desenvolvimento: Dinâmica de voo
+% Revisão: 19/07/2021
+
+
 clc;
 clear all;
 close all;
