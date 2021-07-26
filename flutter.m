@@ -45,19 +45,25 @@ FVa = a.*sqrt(GE./P3a);
 Mach_a = FVa./a;
 
 
-
-figure;
-subplot(121);
-plot(h,FVa,'r','linewidth',1.5),grid;
-xlabel('Altitude (m)');
-ylabel('Velocidade de Flutter (m/s)');
-title('Variação da velocidade de Flutter referente a empena com 3 mm de espessura');
-
-%% Plot dos gráficos referentes ao número de Mach
-
-subplot(122);
-plot(h,Mach_a,'r-.','linewidth',1.5'),grid;
-xlabel('Altitude (m)');
-ylabel('Número de Mach de Flutter');
-title('Variação do número de Mach referente a empena com 3 mm de espessura');
-
+imenu = 2;
+while (imenu ~= 1)
+    imenu = menu('Análise de Flutter','Fim da análise','Velocidade de Flutter','Mach de Flutter');
+    close;
+    
+    switch (imenu)
+        
+        case 2
+            figure;
+            plot(h,FVa,'k','linewidth',1.5),grid;
+            xlabel('Altitude (m)');
+            ylabel('Velocidade de Flutter (m/s)');
+            title('Variação da velocidade de Flutter referente a empena com 3 mm de espessura');
+            
+        case 3 
+            figure;
+            plot(h,Mach_a,'k','linewidth',1.5'),grid;
+            xlabel('Altitude (m)');
+            ylabel('Número de Mach de Flutter');
+            title('Variação do número de Mach referente a empena com 3 mm de espessura');
+    end 
+end
