@@ -14,14 +14,14 @@ close all;
 Po = 101325; % Pressão atmosférica a nível do mar [Pa]
 h = 0:3500; % Vetor altitude [m]
 
-[T1,a1,P1,rho1] = atmosisa(h);
+
 
 Th = 25 - ((6.5*h)/1000);
 % Calculo da velocidade do som (m/s)
  a0 = 331.3;
  a = a0 + 0.606*Th;
 % Calculo da pressão atmosférica
-To = 15 + 273.15;
+To = 25 + 273.15;
 P = Po*((1-0.0065*(h/To)).^(5.2561));
 % b = input('Digite o valor da altura da empena (m): ');
 b = 0.2;
@@ -81,8 +81,23 @@ Mach_c = FVc./a;
 % plot graficos
 
 % Salvar Dados
-Flutter1 = [FVa; FVb; FVc; Mach_a; Mach_b; Mach_c]';
-save('Flutter1');
+%Flutter1 = [FVa; FVb; FVc; Mach_a; Mach_b; Mach_c]';
+%save('Flutter1');
+
+%% Dados de comparação
+[T1,a1,P1,rho1] = atmosisa(h);
+
+% Empena 1
+% Parametro 1
+P1a1 = (1.337*(AR)^3)*(P1*(lambda + 1)); 
+% Parametro 2
+P2a1 = 2*(AR +2)*ra;
+%Parametro 3
+P3a1 = P1a1/P2a1;
+% Calculo da velocidade de Flutter
+FVa1 = a1.*sqrt(GE./P3a1);
+% Calculo do Mach de Flutter
+Mach_a1 = FVa1./a1;
 
 % figure(1)
 % plot(h,FVc,'b','linewidth',1.2),grid;
