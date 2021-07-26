@@ -3,7 +3,7 @@
 % Responsável: Giovanna Gonçalves
 % Departamento de Estruturas e Aerodinâmica
 % Frente de desenvolvimento: Dinâmica de voo
-% Revisão: 19/07/2021
+% Revisão: 26/07/2021
 
 
 clc;
